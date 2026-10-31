@@ -4,7 +4,11 @@
 Uso pessoal: rode no seu próprio computador. As consultas vão devagar (uma a
 cada 1,5 a 2,5 s) e tudo fica em cache, então rodar de novo só busca o que falta.
 
+    python sofascore_sync.py --testar
     python sofascore_sync.py --time "Sport Recife" --de 2009-01-01 --meus-jogos meus_jogos.txt
+
+Dois motores de acesso: --motor wrapper (sofascore-wrapper, Playwright) ou
+--motor scraperfc (ScraperFC, botasaurus). Se um der 403, tente o outro.
 """
 import argparse
 import asyncio
@@ -17,8 +21,6 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import quote
 
-from sofascore_wrapper.api import SofascoreAPI
-
 BRT = timezone(timedelta(hours=-3))
 DETALHES = {
     "evento": "/event/{id}",
@@ -28,14 +30,65 @@ DETALHES = {
 }
 
 
+class ErroSofascore(Exception):
+    def __init__(self, codigo, endpoint):
+        super().__init__(f"{endpoint}: HTTP {codigo}")
+        self.codigo = codigo
+
+
+class MotorWrapper:
+    """sofascore-wrapper: um Chromium do Playwright aberto durante toda a execução."""
+
+    def __init__(self, mostrar):
+        from sofascore_wrapper.api import SofascoreAPI
+        self.mostrar = mostrar
+        self.api = SofascoreAPI()
+
+    async def get(self, endpoint):
+        if self.mostrar and self.api.playwright is None:
+            from playwright.async_api import async_playwright
+            self.api.playwright = await async_playwright().start()
+            self.api.browser = await self.api.playwright.chromium.launch(headless=False)
+            self.api.page = await self.api.browser.new_page()
+        try:
+            return await self.api._get(endpoint)
+        except Exception as e:
+            m = re.search(r": (\d{3})$", str(e))
+            if m:
+                raise ErroSofascore(int(m.group(1)), endpoint)
+            raise
+
+    async def fechar(self):
+        await self.api.close()
+
+
+class MotorScraperFC:
+    """ScraperFC: usa o navegador do botasaurus (abre um por consulta, mais lento)."""
+
+    def __init__(self, mostrar):
+        from ScraperFC.utils import botasaurus_browser_get_json
+        self.buscar = botasaurus_browser_get_json
+        self.mostrar = mostrar
+
+    async def get(self, endpoint):
+        r = await asyncio.to_thread(self.buscar, f"https://api.sofascore.com/api/v1{endpoint}", headless=not self.mostrar)
+        erro = r.get("error") if isinstance(r, dict) else None
+        if erro:
+            raise ErroSofascore(erro.get("code", 0), endpoint)
+        return r
+
+    async def fechar(self):
+        pass
+
+
 async def get(api, endpoint, tentativas=3):
     """GET no SofaScore com pausa entre consultas. Devolve None quando o dado não existe (404)."""
     for t in range(tentativas):
         await asyncio.sleep(1.5 + random.random())
         try:
-            return await api._get(endpoint)
-        except Exception as e:
-            if "404" in str(e):
+            return await api.get(endpoint)
+        except ErroSofascore as e:
+            if e.codigo == 404:
                 return None
             if t == tentativas - 1:
                 raise
@@ -167,12 +220,18 @@ async def main():
     ap.add_argument("--detalhes", choices=["meus", "todos", "nenhum"],
                     help="de quais partidas baixar escalação, lances e estatísticas (padrão: meus, ou nenhum sem --meus-jogos)")
     ap.add_argument("--saida", default="dados_sofascore", help="pasta de saída")
+    ap.add_argument("--motor", choices=["wrapper", "scraperfc"], default="wrapper", help="biblioteca usada para acessar o SofaScore")
+    ap.add_argument("--mostrar-navegador", action="store_true", help="abre a janela do navegador em vez de rodar escondido")
+    ap.add_argument("--testar", action="store_true", help="só faz duas consultas para ver se o acesso funciona")
     a = ap.parse_args()
 
-    saida = Path(a.saida)
-    (saida / "partidas").mkdir(parents=True, exist_ok=True)
-    api = SofascoreAPI()
+    api = (MotorWrapper if a.motor == "wrapper" else MotorScraperFC)(a.mostrar_navegador)
     try:
+        if a.testar:
+            await testar(api, a)
+            return
+        saida = Path(a.saida)
+        (saida / "partidas").mkdir(parents=True, exist_ok=True)
         time_id = a.time_id or await achar_time(api, a.time)
         print(f"Listando partidas de {a.de} a {a.ate}…")
         partidas = await listar_partidas(api, time_id, a.de, a.ate)
@@ -197,9 +256,25 @@ async def main():
         for i, p in enumerate(alvo, 1):
             await baixar_detalhes(api, p, saida / "partidas")
             print(f"  {i}/{len(alvo)}  {p['data']}  {p['mandante']} {p['gols_mandante']}x{p['gols_visitante']} {p['visitante']}")
+    except ErroSofascore as e:
+        sys.exit(f"\nO SofaScore recusou a consulta ({e}). Veja \"Se der erro\" no README.")
     finally:
-        await api.close()
+        await api.fechar()
     print("\nPronto.")
+
+
+async def testar(api, a):
+    print(f"Testando o motor {a.motor}…")
+    try:
+        time_id = a.time_id or await achar_time(api, a.time)
+        r = await get(api, f"/team/{time_id}/events/last/0") or {}
+        ultimas = [resumo(e) for e in r.get("events", [])][-3:]
+    except ErroSofascore as e:
+        sys.exit(f"Falhou: {e}")
+    print("Últimas partidas:")
+    for p in ultimas:
+        print(f"  {p['data']}  {p['mandante']} {p['gols_mandante']}x{p['gols_visitante']} {p['visitante']}  ({p['competicao']})")
+    print("Acesso funcionando.")
 
 
 if __name__ == "__main__":

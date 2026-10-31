@@ -1,5 +1,7 @@
 # Sincronizar com o SofaScore
 
+> **Fora do plano.** Em 31/10/2026 o SofaScore recusou o acesso (HTTP 403) com os dois motores, com e sem janela do navegador, inclusive a partir do meu computador. O script fica aqui caso isso mude. A fonte principal é a ESPN (ver `REQUISITOS.md`).
+
 O `sofascore_sync.py` baixa do SofaScore todas as partidas de um time num período, liga a sua lista de jogos (`meus_jogos.txt`) a essas partidas e guarda escalação, lances e estatísticas de cada uma. O resultado são arquivos JSON que o app importa.
 
 Rode no seu computador. O SofaScore costuma bloquear servidores de nuvem, e o script usa um navegador Chromium escondido (via `sofascore-wrapper`) para as consultas.
@@ -11,7 +13,7 @@ Precisa de Python 3.9 ou mais novo.
 macOS / Linux:
 
 ```bash
-cd sport/sync
+cd sync
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -21,12 +23,22 @@ playwright install chromium
 Windows (PowerShell):
 
 ```powershell
-cd sport\sync
+cd sync
 py -m venv .venv
 .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 playwright install chromium
 ```
+
+## Testar o acesso
+
+Antes de tudo, confira se o SofaScore responde. São só duas consultas:
+
+```bash
+python sofascore_sync.py --testar
+```
+
+Se aparecer "Acesso funcionando.", siga para **Rodar**. Se der 403, veja **Se der erro**.
 
 ## Rodar
 
@@ -41,6 +53,8 @@ Opções:
 - `--de` / `--ate`: período, no formato AAAA-MM-DD.
 - `--detalhes meus|todos|nenhum`: de quais partidas baixar escalação, lances e estatísticas. O padrão é só os seus jogos.
 - `--saida`: pasta de saída (padrão `dados_sofascore`).
+- `--motor wrapper|scraperfc`: biblioteca usada para acessar o SofaScore (padrão `wrapper`).
+- `--mostrar-navegador`: abre a janela do navegador em vez de rodar escondido.
 
 A primeira execução leva uns 15 minutos: as consultas vão devagar de propósito. Depois tudo fica em cache e só o que falta é buscado.
 
@@ -54,7 +68,29 @@ No fim, o script lista as linhas com alerta. Confira essas.
 
 ## Se der erro
 
-- **403 ou "Failed to fetch"**: o SofaScore bloqueou. Espere alguns minutos e rode de novo; o cache guarda o que já veio.
-- **O wrapper parou de funcionar**: o `sofascore-wrapper` não é oficial e pode quebrar quando o SofaScore muda. Nesse caso o app usa a ESPN.
+Teste nesta ordem, sempre com `--testar`, e pare no primeiro que funcionar:
+
+1. **Navegador visível:** `python sofascore_sync.py --testar --mostrar-navegador`. Abre uma janela do Chromium; deixe ela aberta até o fim.
+2. **Motor ScraperFC:** instale uma vez (precisa de Python 3.10+ e do Google Chrome instalado) e teste:
+
+   ```bash
+   pip install -r requirements-scraperfc.txt
+   ```
+
+   ```bash
+   python sofascore_sync.py --testar --motor scraperfc
+   ```
+
+3. **ScraperFC com navegador visível:** `python sofascore_sync.py --testar --motor scraperfc --mostrar-navegador`.
+
+Quando um funcionar, rode a sincronização com as mesmas opções, por exemplo:
+
+```bash
+python sofascore_sync.py --motor scraperfc --de 2009-01-01 --meus-jogos meus_jogos.txt
+```
+
+Se nenhum funcionar, o SofaScore está bloqueando o acesso automatizado e o app usa a ESPN. Esperar umas horas e tentar de novo às vezes resolve; o cache guarda o que já veio.
+
+O ScraperFC abre um navegador por consulta, então é mais lento: a primeira sincronização completa pode levar uns 40 minutos.
 
 A pasta `dados_sofascore/` não vai para o git.
