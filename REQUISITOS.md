@@ -1,8 +1,14 @@
-# Diário do Leão — requisitos (v0.2)
+# Diário do Leão — requisitos (v0.3)
 
 App para registrar os jogos que eu fui ver no estádio, guardar fotos e ver estatísticas de cada jogo e do conjunto. Os dados das partidas (estádio, público, árbitro, escalação, gols) vêm de uma API de futebol. Começa pessoal, para o Sport, mas o desenho já permite que qualquer torcedor monte o próprio diário. "Diário do Leão" é nome provisório.
 
-Protótipo navegável: `design/prototipo.html`. Ele já usa os dados reais da API para 84 dos 94 jogos.
+Protótipo navegável: `design/prototipo.html`. Ele já usa os dados reais das APIs para 86 dos 94 jogos (84 da ESPN e 2 da API-Football).
+
+## O que mudou desde a v0.2
+
+- API-Football testada (seção 1.2): tem o Pernambucano de 2020 a 2026, mas o plano grátis só libera 2022 a 2024. Dos 9 jogos do estadual, vieram os 2 de 2023, com escalação, gols, árbitro e técnico.
+- Os 2 jogos de 2023 entraram no protótipo. 7 jogos ainda estão sem dados.
+- Script `sync/api_football.py` para buscar o Pernambucano com cache.
 
 ## O que mudou desde a v0.1
 
@@ -18,7 +24,7 @@ Testei as fontes com os 94 jogos da lista.
 | Fonte | Custo | Pernambucano | Série A/B, Copa do Brasil, Nordeste | O que traz | Situação |
 |---|---|---|---|---|---|
 | **ESPN** (`site.api.espn.com`) | Grátis, sem chave | Não tem | Sim, desde 2009 | Placar, data, estádio, público, árbitro, escalação, formação, substituições, gols com minuto e autor, cartões, estatísticas (posse, chutes) | **Testada.** 84 dos 94 jogos encontrados, todos com o placar igual ao da lista |
-| **API-Football** (api-sports.io) | Grátis com 100 requisições/dia; pago a partir de US$ 19/mês | Lista "Pernambucano - 1" na cobertura | Sim | Partidas, escalações, eventos, estatísticas e jogadores; não traz público | **Não testada.** Precisa de chave gratuita para ver quais temporadas do Pernambucano existem |
+| **API-Football** (api-sports.io) | Grátis com 100 requisições/dia, só temporadas 2022–2024; pago a partir de US$ 19/mês | Sim, de 2020 a 2026 | Sim | Partidas, escalações, eventos, técnico e árbitro; não traz público nem formação no estadual | **Testada em 31/10/2026** (seção 1.2). 2 dos 9 jogos do estadual no plano grátis |
 | SofaScore | Não tem API pública | Sim | Sim | Tudo, inclusive público | Bloqueia acesso automatizado (HTTP 403) e os termos proíbem uso. Descartada |
 | Wrappers do SofaScore (seção 1.1) | Grátis | Sim | Sim | Igual ao SofaScore, e mais (notas, mapa de calor, momentum) | **Testados em 31/10/2026: 403 em todos os modos** (sofascore-wrapper e ScraperFC, com e sem janela do navegador), na nuvem e no meu computador. Descartados |
 | Transfermarkt (`felipeall/transfermarkt-api`, código aberto) | Grátis, hospedar por conta própria | Sim (no site) | Sim | Escalação, gols, técnicos | Não tem rota de jogos por time; a instância pública devolveu 403. Só como apoio |
@@ -69,10 +75,47 @@ Levantamento de 31/10/2026 (versões no PyPI e código de cada pacote). Não deu
 
 **Resultado:** o SofaScore recusou o acesso (HTTP 403) com os dois wrappers, com o navegador escondido e visível, também a partir do meu computador. Ele está bloqueando acesso automatizado; não vale insistir com técnicas para driblar o bloqueio. O script `sync/sofascore_sync.py` fica guardado caso isso mude, mas não faz parte do plano.
 
+### 1.2 Resultado do teste com a API-Football
+
+Teste de 31/10/2026 com a chave gratuita (variável `API_FOOTBALL_KEY` do ambiente). Gastou 8 das 100 consultas do dia; as recusadas por falta de acesso à temporada não contam.
+
+- **Ids:** Pernambucano - 1 = `622`; Sport Recife = `123` (há ids separados para feminino, sub-20, sub-23, sub-19 e sub-17).
+- **Temporadas do Pernambucano na API:** 2020 a 2026, todas com eventos e escalação. Estatísticas da partida só em 2025. A de 2017 e a de 2019 não existem.
+- **O plano grátis só libera 2022 a 2024.** As outras temporadas devolvem "Free plans do not have access to this season".
+
+Os 9 jogos do estadual que a ESPN não tem:
+
+| Jogo | Na API-Football |
+|---|---|
+| 16/04/2017 Sport 3x2 Náutico | Não existe (a API começa em 2020) |
+| 28/02/2019 Sport 3x1 Afogados | Não existe |
+| 11/03/2023 Sport 2x0 Santa Cruz | **Achado** (fixture 979101, 1ª fase, rodada 11) |
+| 22/04/2023 Sport 2x0 Retrô | **Achado** (fixture 1021242, final, jogo de volta) |
+| 09/03/2025 Sport 2x0 Santa Cruz | Só no plano pago |
+| 02/04/2025 Sport 1x2 Retrô | Só no plano pago |
+| 31/01/2026 Sport 2x1 Santa Cruz | Só no plano pago |
+| 21/02/2026 Sport 3x2 Retrô | Só no plano pago |
+| 01/03/2026 Sport 3x3 Náutico | Só no plano pago |
+
+O que veio nos 2 jogos de 2023:
+
+- Placar igual ao da lista, data, estádio (Ilha do Retiro nos dois), árbitro, fase.
+- Escalação titular e reservas dos dois times, técnico (Enderson Moreira), gols com minuto e autor, cartões e substituições.
+- Não veio: público, formação e estatísticas (posse, chutes).
+
+Cuidados para a implementação:
+
+- **Nomes diferentes entre fontes:** "F. Labandeira" na API-Football é "Facundo Labandeira" na ESPN; "Ewerthon" é "Ewerton". Sem juntar, o mesmo jogador conta como dois. Dentro da própria API-Football o nome muda entre escalação e eventos ("Vágner Love" e "Vagner Love"). O app precisa de uma tabela de jogadores com o id de cada fonte e apelidos para juntar.
+- **Substituição:** no evento `subst`, `player` é quem sai e `assist` é quem entra.
+- **Estádio pelo nome oficial:** "Estádio Adelmar da Costa Carvalho" é a Ilha do Retiro; "Itaipava Arena Pernambuco" é a Arena.
+- O contador de consultas do `/status` atualiza com alguns minutos de atraso. O app deve contar as próprias consultas em vez de depender dele.
+
+**Para os 5 jogos de 2025 e 2026:** o plano pago mais barato (US$ 19 por um mês) libera essas temporadas. Como cada partida é buscada uma vez e fica no banco, um mês basta; depois dá para cancelar. Os 2 jogos de 2017 e 2019 ficam para preenchimento à mão.
+
 ### Recomendação
 
 1. **ESPN como fonte principal**, consultada pelo próprio servidor do app. Grátis, sem chave, cobre 84 dos 94 jogos.
-2. **API-Football para o Pernambucano**, com chave gratuita (100 consultas por dia). Falta testar quais temporadas ela tem.
+2. **API-Football para o Pernambucano**, com chave gratuita para 2022 a 2024 e, se valer a pena, um mês do plano pago para 2025 e 2026 (seção 1.2).
 3. **Preenchimento à mão sempre disponível** para o que nenhuma API tiver: base, amistosos e estaduais antigos.
 4. **Guardar no banco tudo o que vier das fontes**, com a fonte e o id original. Cada partida é buscada uma vez; isso protege contra mudanças nas APIs e reduz consultas.
 5. Para o que nenhuma tiver, conferir no site do SofaScore ou do ogol pelo navegador e preencher à mão.
@@ -97,7 +140,7 @@ Levantamento de 31/10/2026 (versões no PyPI e código de cada pacote). Não deu
 | `público: 10.253` | Campo público; vale mais que o da API |
 | Títulos, final, acesso, Magrão, sub-17 | Tags no jogo |
 | 4 datas erradas (seção 1) | Corrigidas pela API, com aviso para eu confirmar |
-| 9 jogos de estadual | Competição = Campeonato Pernambucano, marcada "a confirmar" até virem de uma API |
+| 9 jogos de estadual | Competição = Campeonato Pernambucano. Os 2 de 2023 já vêm da API-Football; os outros 7 ficam "a confirmar" até virem de uma API ou serem preenchidos à mão |
 
 ## 4. Modelo de dados
 
@@ -191,15 +234,15 @@ Implicações:
 Os itens das seções RF15 a RF19.
 
 ### 7.3 Novas, com dados da API
-Resultados já calculados com os 84 jogos que a ESPN cobre:
+Resultados já calculados com os 86 jogos que têm dados de API (84 da ESPN e 2 da API-Football). O pé-quente usa só os 84 da ESPN, porque a comparação é com o Sport mandante nas competições que a ESPN cobre.
 
 | Estatística | Resultado |
 |---|---|
 | **Pé-quente**: meu aproveitamento comparado ao do Sport como mandante, nas mesmas competições e no mesmo período | 64,3% comigo contra 58,9% no geral (+5,4 pontos) |
-| **Ilha × Arena** | Ilha do Retiro 36V 13E 13D; Arena de Pernambuco 11V 8E 3D |
+| **Ilha × Arena** | Ilha do Retiro 38V 13E 13D; Arena de Pernambuco 11V 8E 3D |
 | **Artilheiros que vi** | Chrystian 8, André 6, Diego Souza 6 |
-| **Jogadores que mais vi em campo** | Diego Souza, Durval, Rafael Thyere e Rithely, 23 jogos cada |
-| **Quando saem os gols do Sport** | 28 dos 107 gols entre os 76 minutos e o fim |
+| **Jogadores que mais vi em campo** | Rafael Thyere 24; Diego Souza, Durval e Rithely, 23 cada |
+| **Quando saem os gols do Sport** | 29 dos 111 gols entre os 76 minutos e o fim |
 | **Maior público** | 37.430 no Sport 0x2 Palmeiras de 23/07/2017 |
 | **Árbitro que mais vi** | Savio Pereira Sampaio, 5 jogos |
 
@@ -236,7 +279,7 @@ O app vive em `gabbrbsCIn/daily`, separado de qualquer outro projeto. O código 
 
 ## 10. Perguntas em aberto
 
-1. Quer criar a chave gratuita da API-Football para eu testar o Pernambucano? Ela entra como segredo do ambiente, nunca no código.
+1. Vale pagar um mês da API-Football (US$ 19) para trazer os 5 jogos do Pernambucano de 2025 e 2026? A alternativa é preencher à mão, junto com os de 2017 e 2019.
 2. As 4 datas corrigidas pela ESPN (Palmeiras 2016, Vitória 2017, Avaí 2026 e São Paulo 2025) estão certas?
 3. Quais setores você costuma usar? Viram a lista inicial de sugestões.
 

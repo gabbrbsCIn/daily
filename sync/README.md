@@ -1,4 +1,23 @@
-# Sincronizar com o SofaScore
+# Sincronização com as fontes de dados
+
+## API-Football (Pernambucano)
+
+O `api_football.py` busca na API-Football os jogos do Sport no Pernambucano, liga cada um à linha da `meus_jogos.txt` e baixa escalação e eventos. Só usa a biblioteca padrão do Python.
+
+A chave vem da variável `API_FOOTBALL_KEY`. Nunca coloque a chave no código.
+
+```bash
+python3 api_football.py --temporadas 2022 2023 2024
+```
+
+- Cada resposta fica em `dados_api_football/cache/`; rodar de novo não gasta consultas.
+- O resultado vai para `dados_api_football/pernambucano.json`, no formato do protótipo (`AF` em `design/prototipo.html`).
+- O plano grátis só libera 2022 a 2024. Para outra temporada o script avisa "sem acesso" e segue.
+- O dicionário `APELIDOS` junta nomes que a API-Football escreve diferente da ESPN (ex.: "F. Labandeira" → "Facundo Labandeira").
+
+A pasta `dados_api_football/` não vai para o git.
+
+## SofaScore
 
 > **Fora do plano.** Em 31/10/2026 o SofaScore recusou o acesso (HTTP 403) com os dois motores, com e sem janela do navegador, inclusive a partir do meu computador. O script fica aqui caso isso mude. A fonte principal é a ESPN (ver `REQUISITOS.md`).
 
@@ -6,7 +25,7 @@ O `sofascore_sync.py` baixa do SofaScore todas as partidas de um time num perío
 
 Rode no seu computador. O SofaScore costuma bloquear servidores de nuvem, e o script usa um navegador Chromium escondido (via `sofascore-wrapper`) para as consultas.
 
-## Primeira vez
+### Primeira vez
 
 Precisa de Python 3.9 ou mais novo.
 
@@ -30,7 +49,7 @@ pip install -r requirements.txt
 playwright install chromium
 ```
 
-## Testar o acesso
+### Testar o acesso
 
 Antes de tudo, confira se o SofaScore responde. São só duas consultas:
 
@@ -40,7 +59,7 @@ python sofascore_sync.py --testar
 
 Se aparecer "Acesso funcionando.", siga para **Rodar**. Se der 403, veja **Se der erro**.
 
-## Rodar
+### Rodar
 
 ```bash
 python sofascore_sync.py --time "Sport Recife" --de 2009-01-01 --meus-jogos meus_jogos.txt
@@ -58,7 +77,7 @@ Opções:
 
 A primeira execução leva uns 15 minutos: as consultas vão devagar de propósito. Depois tudo fica em cache e só o que falta é buscado.
 
-## O que sai
+### O que sai
 
 - `dados_sofascore/partidas.json`: todas as partidas do time no período (data, competição, rodada, times, placar).
 - `dados_sofascore/meus_jogos.json`: cada linha da sua lista com o id da partida no SofaScore e um alerta quando a data, o adversário ou o placar não bateram.
@@ -66,7 +85,7 @@ A primeira execução leva uns 15 minutos: as consultas vão devagar de propósi
 
 No fim, o script lista as linhas com alerta. Confira essas.
 
-## Se der erro
+### Se der erro
 
 Teste nesta ordem, sempre com `--testar`, e pare no primeiro que funcionar:
 
