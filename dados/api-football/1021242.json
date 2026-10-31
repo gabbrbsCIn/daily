@@ -1,0 +1,1059 @@
+{
+ "fixture": {
+  "fixture": {
+   "id": 1021242,
+   "referee": "Rodrigo José Pereira de Lima",
+   "timezone": "UTC",
+   "date": "2023-04-22T19:30:00+00:00",
+   "timestamp": 1682191800,
+   "periods": {
+    "first": 1682191800,
+    "second": 1682195400
+   },
+   "venue": {
+    "id": 276,
+    "name": "Estádio Adelmar da Costa Carvalho",
+    "city": "Recife, Pernambuco"
+   },
+   "status": {
+    "long": "Match Finished",
+    "short": "FT",
+    "elapsed": 90,
+    "extra": null
+   }
+  },
+  "league": {
+   "id": 622,
+   "name": "Pernambucano - 1",
+   "country": "Brazil",
+   "logo": "https://media.api-sports.io/football/leagues/622.png",
+   "flag": "https://media.api-sports.io/flags/br.svg",
+   "season": 2023,
+   "round": "Finals",
+   "standings": true
+  },
+  "teams": {
+   "home": {
+    "id": 123,
+    "name": "Sport Recife",
+    "logo": "https://media.api-sports.io/football/teams/123.png",
+    "winner": true
+   },
+   "away": {
+    "id": 13098,
+    "name": "Retrô",
+    "logo": "https://media.api-sports.io/football/teams/13098.png",
+    "winner": false
+   }
+  },
+  "goals": {
+   "home": 2,
+   "away": 0
+  },
+  "score": {
+   "halftime": {
+    "home": 1,
+    "away": 0
+   },
+   "fulltime": {
+    "home": 2,
+    "away": 0
+   },
+   "extratime": {
+    "home": null,
+    "away": null
+   },
+   "penalty": {
+    "home": null,
+    "away": null
+   }
+  }
+ },
+ "lineups": [
+  {
+   "team": {
+    "id": 123,
+    "name": "Sport Recife",
+    "logo": "https://media.api-sports.io/football/teams/123.png",
+    "colors": null
+   },
+   "coach": {
+    "id": 2415,
+    "name": "Enderson Moreira",
+    "photo": "https://media.api-sports.io/football/coachs/2415.png"
+   },
+   "formation": null,
+   "startXI": [
+    {
+     "player": {
+      "id": 1054,
+      "name": "Renan",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 9560,
+      "name": "Rafael Thyere",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 9789,
+      "name": "Igor Cariús",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 9340,
+      "name": "Sabino",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 137606,
+      "name": "Ewerthon",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 9325,
+      "name": "Jorginho",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 10279,
+      "name": "Fabinho",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 9572,
+      "name": "Ronaldo",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 10261,
+      "name": "Vágner Love",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 51587,
+      "name": "F. Labandeira",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 197383,
+      "name": "Luciano Juba",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    }
+   ],
+   "substitutes": [
+    {
+     "player": {
+      "id": 10436,
+      "name": "Edinho",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 197276,
+      "name": "Felipinho",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 63839,
+      "name": "Gabriel Santos",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 305038,
+      "name": "Pedro Martins",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 9558,
+      "name": "Chico",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 406023,
+      "name": "Fábio Matheus",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 54347,
+      "name": "Jordan",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 10362,
+      "name": "Kayke",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 9727,
+      "name": "Matheus Vargas",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 280109,
+      "name": "Paulinho",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 305036,
+      "name": "Renzo",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 1066,
+      "name": "Wanderson",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    }
+   ]
+  },
+  {
+   "team": {
+    "id": 13098,
+    "name": "Retrô",
+    "logo": "https://media.api-sports.io/football/teams/13098.png",
+    "colors": null
+   },
+   "coach": {
+    "id": 15843,
+    "name": "Dico Woolley",
+    "photo": "https://media.api-sports.io/football/coachs/15843.png"
+   },
+   "formation": null,
+   "startXI": [
+    {
+     "player": {
+      "id": 54662,
+      "name": "Jean",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 178470,
+      "name": "Guilherme Paraíba",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 115521,
+      "name": "Israel",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 80178,
+      "name": "Yuri Bigode",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 312087,
+      "name": "Edson",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 44611,
+      "name": "Jonas",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 54426,
+      "name": "Radsley",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 10354,
+      "name": "Ratinho",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 12828,
+      "name": "Fernandinho",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 77777,
+      "name": "Giva",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 238306,
+      "name": "Alencar",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    }
+   ],
+   "substitutes": [
+    {
+     "player": {
+      "id": 10490,
+      "name": "Rômulo",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 44467,
+      "name": "Luisinho",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 268063,
+      "name": "Willian Marcílio",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 80665,
+      "name": "Matheus Serafim",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 159644,
+      "name": "Renato Henrique",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 55295,
+      "name": "Albano",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 9669,
+      "name": "Bruno Moura",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 402972,
+      "name": "Diego Guerra",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 159744,
+      "name": "Erivelton",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 55200,
+      "name": "Gustavo Ermel",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 238066,
+      "name": "Hudson",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 9931,
+      "name": "Jean Raphael",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 140465,
+      "name": "João Marcos",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 80090,
+      "name": "Júnior Fialho",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    },
+    {
+     "player": {
+      "id": 54667,
+      "name": "Renan Dutra",
+      "number": null,
+      "pos": null,
+      "grid": null
+     }
+    }
+   ]
+  }
+ ],
+ "events": [
+  {
+   "time": {
+    "elapsed": 5,
+    "extra": null
+   },
+   "team": {
+    "id": 13098,
+    "name": "Retrô",
+    "logo": "https://media.api-sports.io/football/teams/13098.png"
+   },
+   "player": {
+    "id": 10354,
+    "name": "Ratinho"
+   },
+   "assist": {
+    "id": 10490,
+    "name": "Rômulo"
+   },
+   "type": "subst",
+   "detail": "Substitution 1",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 12,
+    "extra": null
+   },
+   "team": {
+    "id": 123,
+    "name": "Sport Recife",
+    "logo": "https://media.api-sports.io/football/teams/123.png"
+   },
+   "player": {
+    "id": 51587,
+    "name": "F. Labandeira"
+   },
+   "assist": {
+    "id": 10436,
+    "name": "Edinho"
+   },
+   "type": "subst",
+   "detail": "Substitution 1",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 21,
+    "extra": null
+   },
+   "team": {
+    "id": 123,
+    "name": "Sport Recife",
+    "logo": "https://media.api-sports.io/football/teams/123.png"
+   },
+   "player": {
+    "id": 10261,
+    "name": "Vágner Love"
+   },
+   "assist": {
+    "id": null,
+    "name": null
+   },
+   "type": "Goal",
+   "detail": "Normal Goal",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 34,
+    "extra": null
+   },
+   "team": {
+    "id": 123,
+    "name": "Sport Recife",
+    "logo": "https://media.api-sports.io/football/teams/123.png"
+   },
+   "player": {
+    "id": 9560,
+    "name": "Rafael Thyere"
+   },
+   "assist": {
+    "id": null,
+    "name": null
+   },
+   "type": "Card",
+   "detail": "Yellow Card",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 44,
+    "extra": null
+   },
+   "team": {
+    "id": 123,
+    "name": "Sport Recife",
+    "logo": "https://media.api-sports.io/football/teams/123.png"
+   },
+   "player": {
+    "id": 10261,
+    "name": "Vagner Love"
+   },
+   "assist": {
+    "id": null,
+    "name": null
+   },
+   "type": "Card",
+   "detail": "Yellow Card",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 44,
+    "extra": null
+   },
+   "team": {
+    "id": 13098,
+    "name": "Retrô",
+    "logo": "https://media.api-sports.io/football/teams/13098.png"
+   },
+   "player": {
+    "id": 12828,
+    "name": "S. Fernandinho"
+   },
+   "assist": {
+    "id": null,
+    "name": null
+   },
+   "type": "Card",
+   "detail": "Yellow Card",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 45,
+    "extra": null
+   },
+   "team": {
+    "id": 13098,
+    "name": "Retrô",
+    "logo": "https://media.api-sports.io/football/teams/13098.png"
+   },
+   "player": {
+    "id": 178470,
+    "name": "Guilherme Paraiba"
+   },
+   "assist": {
+    "id": null,
+    "name": null
+   },
+   "type": "Card",
+   "detail": "Yellow Card",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 45,
+    "extra": 7
+   },
+   "team": {
+    "id": 13098,
+    "name": "Retrô",
+    "logo": "https://media.api-sports.io/football/teams/13098.png"
+   },
+   "player": {
+    "id": 54426,
+    "name": "Radsley"
+   },
+   "assist": {
+    "id": null,
+    "name": null
+   },
+   "type": "Card",
+   "detail": "Red Card",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 45,
+    "extra": 9
+   },
+   "team": {
+    "id": 13098,
+    "name": "Retrô",
+    "logo": "https://media.api-sports.io/football/teams/13098.png"
+   },
+   "player": {
+    "id": 10490,
+    "name": "Romulo"
+   },
+   "assist": {
+    "id": null,
+    "name": null
+   },
+   "type": "Card",
+   "detail": "Yellow Card",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 45,
+    "extra": 9
+   },
+   "team": {
+    "id": 13098,
+    "name": "Retrô",
+    "logo": "https://media.api-sports.io/football/teams/13098.png"
+   },
+   "player": {
+    "id": null,
+    "name": "D. Wolley"
+   },
+   "assist": {
+    "id": null,
+    "name": null
+   },
+   "type": "Card",
+   "detail": "Red Card",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 46,
+    "extra": null
+   },
+   "team": {
+    "id": 13098,
+    "name": "Retrô",
+    "logo": "https://media.api-sports.io/football/teams/13098.png"
+   },
+   "player": {
+    "id": 10490,
+    "name": "Rômulo"
+   },
+   "assist": {
+    "id": 44467,
+    "name": "Luisinho"
+   },
+   "type": "subst",
+   "detail": "Substitution 2",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 46,
+    "extra": null
+   },
+   "team": {
+    "id": 13098,
+    "name": "Retrô",
+    "logo": "https://media.api-sports.io/football/teams/13098.png"
+   },
+   "player": {
+    "id": 44611,
+    "name": "Jonas"
+   },
+   "assist": {
+    "id": 268063,
+    "name": "Willian Marcílio"
+   },
+   "type": "subst",
+   "detail": "Substitution 3",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 55,
+    "extra": null
+   },
+   "team": {
+    "id": 123,
+    "name": "Sport Recife",
+    "logo": "https://media.api-sports.io/football/teams/123.png"
+   },
+   "player": {
+    "id": 9325,
+    "name": "Jorginho"
+   },
+   "assist": {
+    "id": null,
+    "name": null
+   },
+   "type": "Card",
+   "detail": "Yellow Card",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 55,
+    "extra": null
+   },
+   "team": {
+    "id": 123,
+    "name": "Sport Recife",
+    "logo": "https://media.api-sports.io/football/teams/123.png"
+   },
+   "player": {
+    "id": 9789,
+    "name": "Igor Cariús"
+   },
+   "assist": {
+    "id": 197276,
+    "name": "Felipinho"
+   },
+   "type": "subst",
+   "detail": "Substitution 2",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 55,
+    "extra": null
+   },
+   "team": {
+    "id": 123,
+    "name": "Sport Recife",
+    "logo": "https://media.api-sports.io/football/teams/123.png"
+   },
+   "player": {
+    "id": 9325,
+    "name": "Jorginho"
+   },
+   "assist": {
+    "id": 63839,
+    "name": "Gabriel Santos"
+   },
+   "type": "subst",
+   "detail": "Substitution 3",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 58,
+    "extra": null
+   },
+   "team": {
+    "id": 13098,
+    "name": "Retrô",
+    "logo": "https://media.api-sports.io/football/teams/13098.png"
+   },
+   "player": {
+    "id": 77777,
+    "name": "Giva"
+   },
+   "assist": {
+    "id": 80665,
+    "name": "Matheus Serafim"
+   },
+   "type": "subst",
+   "detail": "Substitution 4",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 72,
+    "extra": null
+   },
+   "team": {
+    "id": 123,
+    "name": "Sport Recife",
+    "logo": "https://media.api-sports.io/football/teams/123.png"
+   },
+   "player": {
+    "id": 10436,
+    "name": "Edinho"
+   },
+   "assist": {
+    "id": null,
+    "name": null
+   },
+   "type": "Card",
+   "detail": "Yellow Card",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 72,
+    "extra": null
+   },
+   "team": {
+    "id": 123,
+    "name": "Sport Recife",
+    "logo": "https://media.api-sports.io/football/teams/123.png"
+   },
+   "player": {
+    "id": 137606,
+    "name": "Ewerthon"
+   },
+   "assist": {
+    "id": null,
+    "name": null
+   },
+   "type": "Card",
+   "detail": "Red Card",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 74,
+    "extra": null
+   },
+   "team": {
+    "id": 123,
+    "name": "Sport Recife",
+    "logo": "https://media.api-sports.io/football/teams/123.png"
+   },
+   "player": {
+    "id": 10436,
+    "name": "Edinho"
+   },
+   "assist": {
+    "id": 305038,
+    "name": "Pedro Martins"
+   },
+   "type": "subst",
+   "detail": "Substitution 4",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 77,
+    "extra": null
+   },
+   "team": {
+    "id": 13098,
+    "name": "Retrô",
+    "logo": "https://media.api-sports.io/football/teams/13098.png"
+   },
+   "player": {
+    "id": 115521,
+    "name": "Israel"
+   },
+   "assist": {
+    "id": 159644,
+    "name": "Renato Henrique"
+   },
+   "type": "subst",
+   "detail": "Substitution 5",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 83,
+    "extra": null
+   },
+   "team": {
+    "id": 123,
+    "name": "Sport Recife",
+    "logo": "https://media.api-sports.io/football/teams/123.png"
+   },
+   "player": {
+    "id": 9572,
+    "name": "Ronaldo"
+   },
+   "assist": {
+    "id": null,
+    "name": null
+   },
+   "type": "Card",
+   "detail": "Yellow Card",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 84,
+    "extra": null
+   },
+   "team": {
+    "id": 123,
+    "name": "Sport Recife",
+    "logo": "https://media.api-sports.io/football/teams/123.png"
+   },
+   "player": {
+    "id": 63839,
+    "name": "Gabriel Santos"
+   },
+   "assist": {
+    "id": null,
+    "name": null
+   },
+   "type": "Goal",
+   "detail": "Normal Goal",
+   "comments": null
+  },
+  {
+   "time": {
+    "elapsed": 86,
+    "extra": null
+   },
+   "team": {
+    "id": 123,
+    "name": "Sport Recife",
+    "logo": "https://media.api-sports.io/football/teams/123.png"
+   },
+   "player": {
+    "id": 63839,
+    "name": "Gabriel Santos"
+   },
+   "assist": {
+    "id": null,
+    "name": null
+   },
+   "type": "Card",
+   "detail": "Yellow Card",
+   "comments": null
+  }
+ ]
+}

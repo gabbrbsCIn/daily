@@ -18,7 +18,7 @@ Testei as fontes com os 94 jogos da lista.
 | Fonte | Custo | Pernambucano | Série A/B, Copa do Brasil, Nordeste | O que traz | Situação |
 |---|---|---|---|---|---|
 | **ESPN** (`site.api.espn.com`) | Grátis, sem chave | Não tem | Sim, desde 2009 | Placar, data, estádio, público, árbitro, escalação, formação, substituições, gols com minuto e autor, cartões, estatísticas (posse, chutes) | **Testada.** 84 dos 94 jogos encontrados, todos com o placar igual ao da lista |
-| **API-Football** (api-sports.io) | Grátis com 100 requisições/dia; pago a partir de US$ 19/mês | Lista "Pernambucano - 1" na cobertura | Sim | Partidas, escalações, eventos, estatísticas e jogadores; não traz público | **Não testada.** Precisa de chave gratuita para ver quais temporadas do Pernambucano existem |
+| **API-Football** (api-sports.io) | Grátis com 100 requisições/dia; pago a partir de US$ 19/mês | Lista "Pernambucano - 1" na cobertura | Sim | Partidas, estádio, árbitro, técnico, escalações, eventos; não traz público | **Testada (seção 1.2).** Pernambucano desde 2020; o plano grátis só libera 2022 a 2024 |
 | SofaScore | Não tem API pública | Sim | Sim | Tudo, inclusive público | Bloqueia acesso automatizado (HTTP 403) e os termos proíbem uso. Descartada |
 | Wrappers do SofaScore (seção 1.1) | Grátis | Sim | Sim | Igual ao SofaScore, e mais (notas, mapa de calor, momentum) | **Testados em 31/10/2026: 403 em todos os modos** (sofascore-wrapper e ScraperFC, com e sem janela do navegador), na nuvem e no meu computador. Descartados |
 | Transfermarkt (`felipeall/transfermarkt-api`, código aberto) | Grátis, hospedar por conta própria | Sim (no site) | Sim | Escalação, gols, técnicos | Não tem rota de jogos por time; a instância pública devolveu 403. Só como apoio |
@@ -51,6 +51,26 @@ Nenhuma fonte testada cobre os 94 jogos sozinha.
 - **Problema de qualidade:** três jogos aparecem com público exatamente 26.345, o que parece a capacidade do estádio, não o público pagante. O app precisa deixar corrigir o público à mão.
 - **Risco:** a API da ESPN não é documentada nem oficial. Pode mudar ou ser bloqueada sem aviso, e não tem termos claros para uso num produto público.
 
+### 1.2 Resultado do teste com a API-Football
+
+Teste de 31/10/2026, com a chave gratuita.
+
+- **Pernambucano - 1** (id 622) existe de 2020 a 2026, com eventos (gols, cartões) e escalações em todas as temporadas; estatísticas só em 2025. Também há Pernambucano A2, A3 e sub-20.
+- **Sport Recife** tem id 123.
+- **O plano grátis só libera as temporadas de 2022 a 2024.** Pedir 2025 ou 2026 devolve "Free plans do not have access to this season".
+- **Os 9 jogos do Pernambucano que faltam:**
+
+| Jogo | Situação |
+|---|---|
+| 11/03/2023 Sport 2x0 Santa Cruz | **Encontrado** (fixture 979101): árbitra, técnico, escalação e gols (Jorginho e Luciano Juba) |
+| 22/04/2023 Sport 2x0 Retrô (final) | **Encontrado** (fixture 1021242): árbitro, técnico, escalação e gols (Vágner Love e Gabriel Santos) |
+| 09/03/2025 Santa Cruz, 02/04/2025 Retrô, 31/01/2026 Santa Cruz, 21/02/2026 Retrô, 01/03/2026 Náutico | Existem na API, mas só no plano pago |
+| 16/04/2017 Náutico, 28/02/2019 Afogados | Fora da API (cobertura começa em 2020). Preencher à mão |
+
+- A API-Football traz o **técnico** de cada jogo, que a ESPN não tem. Isso permite o aproveitamento por técnico.
+- O estádio vem com o nome oficial: a Ilha do Retiro aparece como "Estádio Adelmar da Costa Carvalho". O app precisa de um mapa de nomes de estádio.
+- O teste gastou 11 das 100 consultas do dia.
+
 ### 1.1 Wrappers do SofaScore
 
 Levantamento de 31/10/2026 (versões no PyPI e código de cada pacote). Não deu para rodar nenhum no ambiente de nuvem, que bloqueia contorno de proteção anti-robô.
@@ -72,7 +92,7 @@ Levantamento de 31/10/2026 (versões no PyPI e código de cada pacote). Não deu
 ### Recomendação
 
 1. **ESPN como fonte principal**, consultada pelo próprio servidor do app. Grátis, sem chave, cobre 84 dos 94 jogos.
-2. **API-Football para o Pernambucano**, com chave gratuita (100 consultas por dia). Falta testar quais temporadas ela tem.
+2. **API-Football para o Pernambucano** (seção 1.2). Com o plano grátis cobre os jogos de 2022 a 2024. Para 2025 e 2026, assinar o plano Pro por um mês (US$ 19), baixar tudo e cancelar; os dados ficam no banco.
 3. **Preenchimento à mão sempre disponível** para o que nenhuma API tiver: base, amistosos e estaduais antigos.
 4. **Guardar no banco tudo o que vier das fontes**, com a fonte e o id original. Cada partida é buscada uma vez; isso protege contra mudanças nas APIs e reduz consultas.
 5. Para o que nenhuma tiver, conferir no site do SofaScore ou do ogol pelo navegador e preencher à mão.
@@ -236,7 +256,7 @@ O app vive em `gabbrbsCIn/daily`, separado de qualquer outro projeto. O código 
 
 ## 10. Perguntas em aberto
 
-1. Quer criar a chave gratuita da API-Football para eu testar o Pernambucano? Ela entra como segredo do ambiente, nunca no código.
+1. Vale assinar um mês do plano Pro da API-Football (US$ 19) para trazer os 5 jogos do Pernambucano de 2025 e 2026, ou prefere preencher esses à mão?
 2. As 4 datas corrigidas pela ESPN (Palmeiras 2016, Vitória 2017, Avaí 2026 e São Paulo 2025) estão certas?
 3. Quais setores você costuma usar? Viram a lista inicial de sugestões.
 
