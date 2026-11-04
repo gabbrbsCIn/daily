@@ -4,12 +4,13 @@ App para registrar os jogos que eu fui ver no estádio, guardar fotos e ver esta
 
 Protótipo navegável: `design/prototipo.html`. Ele já usa os dados reais das APIs para 86 dos 94 jogos (84 da ESPN e 2 da API-Football).
 
-O app começou (seção 12).
+O app começou e está publicado em https://diario-do-leao.vercel.app (seção 12).
 
 ## O que mudou desde a v0.2
 
 - Decisão de 04/11/2026: não assinar o plano pago da API-Football. Os 7 jogos do Pernambucano sem dados (2017, 2019, 2025 e 2026) e o sub-17 de 2016 são preenchidos à mão no app.
 - Primeira versão do app (seção 12).
+- Decisão de 04/11/2026: o app passa a aceitar outros torcedores, cada um com o próprio diário e login do Google. O time continua sendo o Sport.
 
 ## O que mudou desde a v0.1
 
@@ -169,7 +170,7 @@ Fluxo para quem chega pela primeira vez:
 O protótipo tem esse fluxo na aba **Montar diário**, com os jogos reais do Sport em 2025 e 2026.
 
 Implicações:
-- Login com senha única.
+- Login com a conta do Google.
 - A API é consultada por time e temporada, uma vez, e o resultado fica no banco.
 
 ## 6. Funcionalidades
@@ -253,7 +254,7 @@ Outras para a v1 ou para depois:
 - **Next.js** (App Router) com páginas renderizadas no servidor e PWA para instalar no celular.
 - **Postgres** (Neon ou Supabase) em produção; PGlite no desenvolvimento.
 - **Armazenamento de fotos:** Vercel Blob ou Supabase Storage.
-- **Login:** senha única (app pessoal).
+- **Login:** Google, pelo Neon Auth (decisão de 04/11/2026).
 - **Rotina diária no servidor** que busca na ESPN as partidas recentes do Sport.
 - **Repositório próprio** para o app (ver nota abaixo).
 
@@ -265,8 +266,7 @@ O app vive em `gabbrbsCIn/daily`, separado de qualquer outro projeto. O código 
 
 1. As 4 datas corrigidas pela ESPN (Palmeiras 2016, Vitória 2017, Avaí 2026 e São Paulo 2025) estão certas?
 2. Quais setores você costuma usar? Viram a lista inicial de sugestões.
-3. Onde publicar: Vercel com Postgres da Neon (grátis) é o caminho proposto. Precisa da sua conta para criar o projeto e o banco.
-4. Em 04/11/2026 a API-Football respondeu "Your account is suspended". A conta precisa ser conferida em dashboard.api-football.com; até lá o Pernambucano só entra à mão. Os 2 jogos de 2023 já estão no app, vindos dos arquivos em `dados/api-football/`.
+3. Em 04/11/2026 a API-Football respondeu "Your account is suspended". A conta precisa ser conferida em dashboard.api-football.com; até lá o Pernambucano só entra à mão. Os 2 jogos de 2023 já estão no app, vindos dos arquivos em `dados/api-football/`.
 
 ## 11. Ideias para depois
 
@@ -278,7 +278,9 @@ O app vive em `gabbrbsCIn/daily`, separado de qualquer outro projeto. O código 
 
 ## 12. Situação do app
 
-Primeira versão em 04/11/2026: Next.js 16, Postgres com Drizzle (PGlite no desenvolvimento), login de senha única. Como rodar está no `README.md`.
+Primeira versão em 04/11/2026: Next.js 16, Postgres com Drizzle (PGlite no desenvolvimento), Neon Auth com login do Google, publicado na Vercel com o banco na Neon em São Paulo. Como rodar está no `README.md`.
+
+Cada presença tem dono (`usuario_id`, o id do Neon Auth). A partida da fonte é compartilhada entre os usuários; a partida cadastrada à mão é de quem cadastrou. A lista inicial de 94 jogos só pode ser carregada pelo dono (`DONO_EMAIL`).
 
 | Requisito | Situação |
 |---|---|
@@ -297,3 +299,5 @@ Primeira versão em 04/11/2026: Next.js 16, Postgres com Drizzle (PGlite no dese
 | RF11–RF13 Fotos | Falta: depende do armazenamento (Vercel Blob) |
 | RF21 Exportar | Falta |
 | Rascunho offline e PWA | Falta |
+| Outros times além do Sport | Falta: hoje o Sport está fixo em `src/lib/time.ts` |
+| Login do Google com a marca do app | Falta: hoje usa as credenciais compartilhadas da Neon (ver `README.md`) |

@@ -3,12 +3,13 @@ import { getDb } from '@/lib/db'
 import { adversarios } from '@/lib/estatisticas'
 import { pct } from '@/lib/formato'
 import { listarJogos } from '@/lib/partidas'
+import { usuarioAtual } from '@/lib/sessao'
 import { Res } from '../componentes'
 
 export const metadata = { title: 'Adversários · Diário do Leão' }
 
 export default async function Adversarios() {
-  const lista = adversarios(await listarJogos(await getDb()))
+  const lista = adversarios(await listarJogos(await getDb(), (await usuarioAtual()).id))
   // Freguês e carrasco só entre adversários com 3 jogos ou mais (REQUISITOS.md, 7.1).
   const comTres = lista.filter(a => a.J >= 3).sort((a, b) => b.apr - a.apr || b.J - a.J)
   const fregues = comTres[0], carrasco = comTres.at(-1)

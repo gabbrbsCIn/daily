@@ -5,6 +5,7 @@ import { dia, escalacaoSport, ladoSport } from '@/lib/estatisticas'
 import { hora } from '@/lib/formato'
 import { escreverGols } from '@/lib/manual'
 import { listarJogos } from '@/lib/partidas'
+import { usuarioAtual } from '@/lib/sessao'
 import { excluirPresenca, salvarJogo } from '../acoes'
 import { FormJogo, type ValoresJogo } from './form'
 
@@ -15,7 +16,7 @@ const ESTADIOS = ['Ilha do Retiro', 'Arena de Pernambuco', 'Arruda', 'Aflitos']
 
 export default async function Editar({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
-  const js = await listarJogos(await getDb())
+  const js = await listarJogos(await getDb(), (await usuarioAtual()).id)
   const j = js.find(x => x.id === Number(id))
   if (!j) notFound()
   const unicos = (xs: (string | undefined)[]) => [...new Set(xs.filter((x): x is string => !!x))].sort()

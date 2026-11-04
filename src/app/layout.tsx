@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import Link from 'next/link'
+import { auth } from '@/lib/auth/server'
+import { sair } from './acoes'
 import { Nav } from './nav'
 import './globals.css'
 
@@ -16,7 +18,9 @@ export const viewport: Viewport = {
 // Tudo vem do banco a cada pedido.
 export const dynamic = 'force-dynamic'
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default async function Layout({ children }: { children: React.ReactNode }) {
+  const { data } = await auth.getSession()
+  const usuario = data?.user
   return (
     <html lang="pt-BR">
       <head>
@@ -36,8 +40,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <b>Diário do Leão</b>
                 <span>meus jogos do Sport</span>
               </Link>
+              {usuario && (
+                <form action={sair} className="conta">
+                  <span title={usuario.email}>{usuario.name || usuario.email}</span>
+                  <button>Sair</button>
+                </form>
+              )}
             </div>
-            <Nav />
+            {usuario && <Nav />}
           </div>
         </header>
         <main className="wrap">{children}</main>

@@ -267,3 +267,6 @@ a.btn{display:inline-grid; place-items:center; text-decoration:none}
 @media (max-width:760px){
   .pick .linha{grid-template-columns:30px 76px minmax(0,1fr) auto; gap:8px; padding:10px}
 }
+.conta{display:flex; align-items:center; gap:10px; font-size:13px; color:#c9c0c2; min-width:0}
+.conta span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:160px}
+.conta button{background:none; border:1px solid #ffffff33; color:#f3eeec; border-radius:8px; padding:4px 10px; font-size:13px}

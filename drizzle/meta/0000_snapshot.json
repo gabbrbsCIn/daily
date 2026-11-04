@@ -1,5 +1,5 @@
 {
-  "id": "99502ac2-e14d-44ec-a1fe-74703d67be7e",
+  "id": "3d4c7061-5fe4-46aa-86c3-f6a9f976b566",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -204,6 +204,12 @@
           "primaryKey": true,
           "notNull": true
         },
+        "usuario_id": {
+          "name": "usuario_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
         "partida_id": {
           "name": "partida_id",
           "type": "integer",
@@ -262,7 +268,29 @@
           "default": "now()"
         }
       },
-      "indexes": {},
+      "indexes": {
+        "presencas_usuario_partida_idx": {
+          "name": "presencas_usuario_partida_idx",
+          "columns": [
+            {
+              "expression": "usuario_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "partida_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
       "foreignKeys": {
         "presencas_partida_id_partidas_id_fk": {
           "name": "presencas_partida_id_partidas_id_fk",
@@ -279,15 +307,7 @@
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {
-        "presencas_partida_id_unique": {
-          "name": "presencas_partida_id_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "partida_id"
-          ]
-        }
-      },
+      "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false

@@ -4,6 +4,7 @@ import { getDb } from '@/lib/db'
 import { contexto, escalacaoSport, ladoSport, resultado, type JogoVisto } from '@/lib/estatisticas'
 import { dataCurta, dataLonga, hora, num, pct } from '@/lib/formato'
 import { listarJogos } from '@/lib/partidas'
+import { usuarioAtual } from '@/lib/sessao'
 import { nomeJogador } from '@/lib/time'
 import { Tag, placar, tagsDoJogo } from '../../componentes'
 import { atualizarDaFonte } from './acoes'
@@ -25,7 +26,7 @@ function semDados(j: JogoVisto, oQue: string) {
 
 export default async function Jogo({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
-  const js = await listarJogos(await getDb())
+  const js = await listarJogos(await getDb(), (await usuarioAtual()).id)
   const ctx = contexto(js, Number(id))
   if (!ctx) notFound()
   const j = js[ctx.numero - 1]

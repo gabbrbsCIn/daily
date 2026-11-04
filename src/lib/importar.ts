@@ -31,7 +31,7 @@ const DADOS = path.join(process.cwd(), 'dados')
 const lerJson = async (arquivo: string) => JSON.parse(await readFile(path.join(DADOS, arquivo), 'utf8'))
 const espera = (ms: number) => new Promise(r => setTimeout(r, ms))
 
-async function buscar(l: Linha): Promise<PartidaCompleta> {
+async function buscar(l: Linha, usuarioId: string): Promise<PartidaCompleta> {
   if (l.fonte === 'espn') {
     await espera(300)
     return espn.buscarPartida(l.fonteId!, l.liga)
@@ -40,18 +40,25 @@ async function buscar(l: Linha): Promise<PartidaCompleta> {
     const arq = await lerJson(`api-football/${l.fonteId}.json`)
     return normalizarPartida({ ...arq.fixture, lineups: arq.lineups, events: arq.events, statistics: arq.statistics })
   }
-  return partidaManual({
-    data: l.data,
-    adversario: l.adversario,
-    golsSport: l.golsSport,
-    golsAdversario: l.golsAdversario,
-    competicao: l.competicao ?? 'Outra',
-    sportMandante: true,
-  })
+  return partidaManual(
+    {
+      data: l.data,
+      adversario: l.adversario,
+      golsSport: l.golsSport,
+      golsAdversario: l.golsAdversario,
+      competicao: l.competicao ?? 'Outra',
+      sportMandante: true,
+    },
+    usuarioId,
+  )
 }
 
-/** `atualizar` busca de novo as partidas que já estão no banco. */
-export async function importarDiario(db: Db, opcoes: { atualizar?: boolean; aoAvancar?: (feitos: number, total: number) => void } = {}) {
+/** Importa no diário do usuário. `atualizar` busca de novo as partidas que já estão no banco. */
+export async function importarDiario(
+  db: Db,
+  usuarioId: string,
+  opcoes: { atualizar?: boolean; aoAvancar?: (feitos: number, total: number) => void } = {},
+) {
   const linhas: Linha[] = await lerJson('diario_inicial.json')
   const alertas: string[] = []
   let importados = 0
@@ -67,7 +74,7 @@ export async function importarDiario(db: Db, opcoes: { atualizar?: boolean; aoAv
     }
     if (!partidaId) {
       try {
-        const p = await buscar(l)
+        const p = await buscar(l, usuarioId)
         const placar = sportEhMandante(p) ? [p.golsMandante, p.golsVisitante] : [p.golsVisitante, p.golsMandante]
         if (placar[0] !== l.golsSport || placar[1] !== l.golsAdversario)
           alertas.push(`${rotulo}: placar na fonte ${placar.join('x')}`)
@@ -77,7 +84,7 @@ export async function importarDiario(db: Db, opcoes: { atualizar?: boolean; aoAv
         continue
       }
     }
-    await criarPresenca(db, partidaId, {
+    await criarPresenca(db, usuarioId, partidaId, {
       top5: l.top5 ?? false,
       tags: l.tags ?? [],
       anotacao: l.anotacao ?? null,

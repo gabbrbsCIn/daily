@@ -28,22 +28,27 @@ export const partidas = pgTable(
   t => [uniqueIndex('partidas_fonte_idx').on(t.fonte, t.fonteId)],
 )
 
-// Presença: o meu registro de que fui à partida.
-export const presencas = pgTable('presencas', {
-  id: serial('id').primaryKey(),
-  partidaId: integer('partida_id')
-    .notNull()
-    .unique()
-    .references(() => partidas.id, { onDelete: 'cascade' }),
-  setor: text('setor'),
-  comQuem: text('com_quem'),
-  anotacao: text('anotacao'),
-  tags: text('tags').array().notNull().default([]),
-  top5: boolean('top5').notNull().default(false),
-  publicoCorrigido: integer('publico_corrigido'),
-  aviso: text('aviso'),
-  criadaEm: timestamp('criada_em', { withTimezone: true }).notNull().defaultNow(),
-})
+// Presença: o registro de um usuário de que foi à partida.
+export const presencas = pgTable(
+  'presencas',
+  {
+    id: serial('id').primaryKey(),
+    // Id do usuário no Neon Auth (tabela neon_auth.user).
+    usuarioId: text('usuario_id').notNull(),
+    partidaId: integer('partida_id')
+      .notNull()
+      .references(() => partidas.id, { onDelete: 'cascade' }),
+    setor: text('setor'),
+    comQuem: text('com_quem'),
+    anotacao: text('anotacao'),
+    tags: text('tags').array().notNull().default([]),
+    top5: boolean('top5').notNull().default(false),
+    publicoCorrigido: integer('publico_corrigido'),
+    aviso: text('aviso'),
+    criadaEm: timestamp('criada_em', { withTimezone: true }).notNull().defaultNow(),
+  },
+  t => [uniqueIndex('presencas_usuario_partida_idx').on(t.usuarioId, t.partidaId)],
+)
 
 // Consultas que gastam cota, por fonte e dia (a API-Football grátis permite 100 por dia).
 export const consultas = pgTable(

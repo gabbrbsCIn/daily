@@ -89,13 +89,13 @@ export interface PartidaManual {
   detalhes?: Detalhes
 }
 
-/** Jogo que nenhuma fonte tem: o id na "fonte manual" é a data e o adversário. */
-export function partidaManual(m: PartidaManual): PartidaCompleta {
+/** Jogo que nenhuma fonte tem. É de um usuário só: o id junta o usuário, a data e o adversário. */
+export function partidaManual(m: PartidaManual, usuarioId: string): PartidaCompleta {
   const sport: Time = { nome: TIME.nome }
   const adv: Time = { nome: m.adversario.trim() }
   return {
     fonte: 'manual',
-    fonteId: `${m.data}-${adv.nome.toLowerCase().replace(/\s+/g, '-')}`,
+    fonteId: `${usuarioId}:${m.data}-${adv.nome.toLowerCase().replace(/\s+/g, '-')}`,
     data: new Date(`${m.data}T${m.hora || '12:00'}:00-03:00`).toISOString(),
     competicao: m.competicao,
     mandante: m.sportMandante ? sport : adv,
@@ -110,14 +110,19 @@ export function partidaManual(m: PartidaManual): PartidaCompleta {
   }
 }
 
-export async function criarPresenca(db: Db, partidaId: number, dados: Partial<Omit<Presenca, 'id' | 'partidaId'>> = {}) {
+type DadosPresenca = Partial<Omit<Presenca, 'id' | 'partidaId' | 'usuarioId'>>
+
+export async function criarPresenca(db: Db, usuarioId: string, partidaId: number, dados: DadosPresenca = {}) {
   const [r] = await db
     .insert(presencas)
-    .values({ partidaId, ...dados })
-    .onConflictDoNothing({ target: presencas.partidaId })
+    .values({ usuarioId, partidaId, ...dados })
+    .onConflictDoNothing({ target: [presencas.usuarioId, presencas.partidaId] })
     .returning({ id: presencas.id })
   if (r) return r.id
-  const [existente] = await db.select({ id: presencas.id }).from(presencas).where(eq(presencas.partidaId, partidaId))
+  const [existente] = await db
+    .select({ id: presencas.id })
+    .from(presencas)
+    .where(and(eq(presencas.usuarioId, usuarioId), eq(presencas.partidaId, partidaId)))
   return existente.id
 }
 
@@ -149,12 +154,13 @@ export function jogoVisto(pa: Partida, pr: Presenca): JogoVisto {
   }
 }
 
-/** Todos os jogos em que fui, do mais antigo ao mais recente. */
-export async function listarJogos(db: Db): Promise<JogoVisto[]> {
+/** Todos os jogos a que o usuário foi, do mais antigo ao mais recente. */
+export async function listarJogos(db: Db, usuarioId: string): Promise<JogoVisto[]> {
   const linhas = await db
     .select()
     .from(presencas)
     .innerJoin(partidas, eq(presencas.partidaId, partidas.id))
+    .where(eq(presencas.usuarioId, usuarioId))
     .orderBy(asc(partidas.data))
   return linhas.map(l => jogoVisto(l.partidas, l.presencas))
 }

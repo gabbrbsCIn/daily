@@ -3,6 +3,7 @@ import { getDb } from '@/lib/db'
 import { registro, resultado, temporada } from '@/lib/estatisticas'
 import { pct } from '@/lib/formato'
 import { listarJogos } from '@/lib/partidas'
+import { usuarioAtual } from '@/lib/sessao'
 import { LinhaJogo, tagsDoJogo } from '../componentes'
 
 export const metadata = { title: 'Jogos · Diário do Leão' }
@@ -11,7 +12,7 @@ type Filtros = { q?: string; r?: string; ano?: string; comp?: string; top5?: str
 
 export default async function Jogos({ searchParams }: { searchParams: Promise<Filtros> }) {
   const f = await searchParams
-  const todos = await listarJogos(await getDb())
+  const todos = await listarJogos(await getDb(), (await usuarioAtual()).id)
   const q = f.q?.trim().toLowerCase()
   const lista = todos
     .filter(

@@ -6,6 +6,7 @@ import { dia } from '@/lib/estatisticas'
 import type { Fonte, ResumoPartida } from '@/lib/fontes/tipos'
 import { dataCurta, diaSemana } from '@/lib/formato'
 import { consultasHoje, fonteDados } from '@/lib/partidas'
+import { usuarioAtual } from '@/lib/sessao'
 import { TIME } from '@/lib/time'
 import { registrarDaFonte } from './acoes'
 import { FormManual } from './manual'
@@ -22,6 +23,7 @@ export default async function Registrar({ searchParams }: { searchParams: Promis
   const anoAtual = Number(dia(new Date().toISOString()).slice(0, 4))
   const ano = Number(f.ano) || anoAtual
   const fonte: Fonte = f.fonte === 'api-football' ? 'api-football' : 'espn'
+  const usuario = await usuarioAtual()
   const db = await getDb()
 
   let lista: ResumoPartida[] = [], erro = ''
@@ -39,7 +41,7 @@ export default async function Registrar({ searchParams }: { searchParams: Promis
       .select({ fonteId: partidas.fonteId, presenca: presencas.id })
       .from(presencas)
       .innerJoin(partidas, eq(presencas.partidaId, partidas.id))
-      .where(and(eq(partidas.fonte, fonte), inArray(partidas.fonteId, ids)))
+      .where(and(eq(presencas.usuarioId, usuario.id), eq(partidas.fonte, fonte), inArray(partidas.fonteId, ids)))
     for (const l of linhas) jaNoDiario.set(l.fonteId, l.presenca)
   }
   const cota = fonte === 'api-football' ? await consultasHoje(db, 'api-football') : null

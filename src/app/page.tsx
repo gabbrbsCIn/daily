@@ -3,6 +3,7 @@ import { getDb } from '@/lib/db'
 import { resumo, type JogoVisto } from '@/lib/estatisticas'
 import { dataCurta, num, pct, plural } from '@/lib/formato'
 import { listarJogos } from '@/lib/partidas'
+import { ehDono, usuarioAtual } from '@/lib/sessao'
 import { importarDiarioInicial } from './acoes'
 import { BotaoEnviar } from './botao'
 import { placar } from './componentes'
@@ -48,17 +49,23 @@ function Sequencia({ titulo, js }: { titulo: string; js: JogoVisto[] }) {
 export const maxDuration = 300
 
 export default async function Resumo() {
-  const js = await listarJogos(await getDb())
+  const usuario = await usuarioAtual()
+  const js = await listarJogos(await getDb(), usuario.id)
   if (!js.length) {
     return (
       <section className="view">
         <div className="empty">
           <p>
-            Nenhum jogo ainda. <Link href="/registrar">Registre o primeiro</Link> ou carregue os 94 jogos da sua lista.
+            Nenhum jogo no seu diário ainda. <Link href="/registrar">Registre o primeiro jogo que você viu no estádio</Link>.
           </p>
-          <form action={importarDiarioInicial}>
-            <BotaoEnviar rotulo="Carregar meu diário" enviando="Buscando as partidas na ESPN, leva cerca de 1 minuto…" />
-          </form>
+          {ehDono(usuario) && (
+            <form action={importarDiarioInicial}>
+              <BotaoEnviar
+                rotulo="Carregar os 94 jogos da minha lista"
+                enviando="Buscando as partidas na ESPN, leva cerca de 1 minuto…"
+              />
+            </form>
+          )}
         </div>
       </section>
     )
