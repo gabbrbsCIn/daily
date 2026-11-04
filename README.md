@@ -49,6 +49,8 @@ O Neon Auth usa, por enquanto, as credenciais compartilhadas da Neon: funciona s
 2. Preencha a tela de consentimento (nome do app, e-mail de suporte) e publique o app.
 3. No Console da Neon, em Branch → Auth → OAuth providers, troque o Google pelas suas credenciais.
 
+O Neon Auth também vem com login por e-mail e senha ligado. O app não mostra essa opção; para desligar de vez, use o Console da Neon (Branch → Auth → Configuration).
+
 ## Fontes de dados
 
 - **ESPN:** fonte principal, sem chave. Cobre 84 dos 94 jogos. Não é oficial e pode mudar sem aviso.
