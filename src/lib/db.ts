@@ -12,7 +12,8 @@ async function abrir(url = process.env.DATABASE_URL): Promise<Db> {
     const { default: postgres } = await import('postgres')
     const { drizzle } = await import('drizzle-orm/postgres-js')
     const { migrate } = await import('drizzle-orm/postgres-js/migrator')
-    const db = drizzle(postgres(url, { max: 5 }), { schema })
+    // prepare: false porque o pooler da Neon (PgBouncer) não guarda consultas preparadas entre transações.
+    const db = drizzle(postgres(url, { max: 5, prepare: false }), { schema })
     await migrate(db, { migrationsFolder: PASTA_MIGRACOES })
     return db as unknown as Db
   }
