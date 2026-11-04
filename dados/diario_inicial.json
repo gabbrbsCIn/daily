@@ -1,0 +1,876 @@
+[
+ {
+  "data": "2009-07-12",
+  "adversario": "Goiás",
+  "golsSport": 1,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "265942",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2009-09-27",
+  "adversario": "Santo André",
+  "golsSport": 2,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "266101",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2012-06-06",
+  "adversario": "Palmeiras",
+  "golsSport": 2,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "341248",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2013-06-11",
+  "adversario": "Bragantino",
+  "golsSport": 0,
+  "golsAdversario": 2,
+  "fonte": "espn",
+  "fonteId": "365836",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2013-09-17",
+  "adversario": "Guaratinguetá",
+  "golsSport": 1,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "366011",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2014-07-16",
+  "adversario": "Botafogo",
+  "golsSport": 1,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "390539",
+  "liga": "bra.1",
+  "top5": true
+ },
+ {
+  "data": "2014-08-20",
+  "adversario": "Palmeiras",
+  "golsSport": 2,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "390484",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2014-09-27",
+  "adversario": "Cruzeiro",
+  "golsSport": 0,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "390390",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2014-11-09",
+  "adversario": "Flamengo",
+  "golsSport": 2,
+  "golsAdversario": 2,
+  "fonte": "espn",
+  "fonteId": "390312",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2014-11-23",
+  "adversario": "Fluminense",
+  "golsSport": 2,
+  "golsAdversario": 2,
+  "fonte": "espn",
+  "fonteId": "390281",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2015-06-13",
+  "adversario": "Joinville",
+  "golsSport": 2,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "417728",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2015-06-20",
+  "adversario": "Vasco",
+  "golsSport": 2,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "417720",
+  "liga": "bra.1",
+  "top5": true
+ },
+ {
+  "data": "2015-07-12",
+  "adversario": "Palmeiras",
+  "golsSport": 2,
+  "golsAdversario": 2,
+  "fonte": "espn",
+  "fonteId": "417669",
+  "liga": "bra.1",
+  "top5": true
+ },
+ {
+  "data": "2015-07-19",
+  "adversario": "São Paulo",
+  "golsSport": 2,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "417659",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2015-08-02",
+  "adversario": "Cruzeiro",
+  "golsSport": 0,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "417634",
+  "liga": "bra.1",
+  "top5": true
+ },
+ {
+  "data": "2015-08-26",
+  "adversario": "Bahia",
+  "golsSport": 4,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "431527",
+  "liga": "conmebol.sudamericana",
+  "top5": true
+ },
+ {
+  "data": "2015-08-30",
+  "adversario": "Flamengo",
+  "golsSport": 0,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "417585",
+  "liga": "bra.1",
+  "top5": true
+ },
+ {
+  "data": "2015-10-18",
+  "adversario": "Atlético-MG",
+  "golsSport": 4,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "417481",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2015-11-29",
+  "adversario": "Corinthians",
+  "golsSport": 2,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "417422",
+  "liga": "bra.1",
+  "top5": true
+ },
+ {
+  "data": "2016-05-24",
+  "adversario": "Corinthians",
+  "golsSport": 2,
+  "golsAdversario": 2,
+  "fonte": "manual",
+  "competicao": "Copa do Brasil Sub-17",
+  "tags": [
+   "Base · Sub-17"
+  ],
+  "anotacao": "Copa do Brasil sub-17."
+ },
+ {
+  "data": "2016-07-04",
+  "adversario": "Palmeiras",
+  "golsSport": 1,
+  "golsAdversario": 3,
+  "fonte": "espn",
+  "fonteId": "446207",
+  "liga": "bra.1",
+  "top5": true,
+  "aviso": "Data corrigida pela ESPN: na lista estava 04/06/2016."
+ },
+ {
+  "data": "2016-07-30",
+  "adversario": "Athletico-PR",
+  "golsSport": 2,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "446161",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2016-10-16",
+  "adversario": "Vitória",
+  "golsSport": 1,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "446030",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2017-04-02",
+  "adversario": "Campinense",
+  "golsSport": 3,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "477654",
+  "liga": "bra.copa_do_nordeste"
+ },
+ {
+  "data": "2017-04-16",
+  "adversario": "Náutico",
+  "golsSport": 3,
+  "golsAdversario": 2,
+  "fonte": "manual",
+  "competicao": "Campeonato Pernambucano",
+  "top5": true
+ },
+ {
+  "data": "2017-06-18",
+  "adversario": "Vitória",
+  "golsSport": 1,
+  "golsAdversario": 3,
+  "fonte": "espn",
+  "fonteId": "476233",
+  "liga": "bra.1",
+  "aviso": "Data corrigida pela ESPN: na lista estava 12/06/2017."
+ },
+ {
+  "data": "2017-07-02",
+  "adversario": "Athletico-PR",
+  "golsSport": 1,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "476194",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2017-07-13",
+  "adversario": "Chapecoense",
+  "golsSport": 3,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "476177",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2017-07-23",
+  "adversario": "Palmeiras",
+  "golsSport": 0,
+  "golsAdversario": 2,
+  "fonte": "espn",
+  "fonteId": "476151",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2017-11-08",
+  "adversario": "Botafogo",
+  "golsSport": 1,
+  "golsAdversario": 2,
+  "fonte": "espn",
+  "fonteId": "475976",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2017-11-19",
+  "adversario": "Bahia",
+  "golsSport": 1,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "475944",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2018-05-20",
+  "adversario": "Corinthians",
+  "golsSport": 1,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "507233",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2018-06-13",
+  "adversario": "Grêmio",
+  "golsSport": 0,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "507174",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2018-10-05",
+  "adversario": "Internacional",
+  "golsSport": 2,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "507013",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2018-11-18",
+  "adversario": "Flamengo",
+  "golsSport": 0,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "506943",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2019-02-28",
+  "adversario": "Afogados",
+  "golsSport": 3,
+  "golsAdversario": 1,
+  "fonte": "manual",
+  "competicao": "Campeonato Pernambucano"
+ },
+ {
+  "data": "2019-05-11",
+  "adversario": "Figueirense",
+  "golsSport": 0,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "537829",
+  "liga": "bra.2",
+  "tags": [
+   "Despedida do Magrão"
+  ],
+  "anotacao": "MAGRÃO!!"
+ },
+ {
+  "data": "2019-08-01",
+  "adversario": "Coritiba",
+  "golsSport": 1,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "537718",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2019-08-17",
+  "adversario": "Botafogo-SP",
+  "golsSport": 3,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "537695",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2021-10-17",
+  "adversario": "Santos",
+  "golsSport": 0,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "598344",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2021-10-31",
+  "adversario": "Atlético-GO",
+  "golsSport": 2,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "598316",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2021-11-18",
+  "adversario": "Bahia",
+  "golsSport": 1,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "598277",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2022-05-06",
+  "adversario": "Tombense",
+  "golsSport": 2,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "631480",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2022-07-09",
+  "adversario": "Londrina",
+  "golsSport": 2,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "631367",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2022-07-28",
+  "adversario": "Guarani",
+  "golsSport": 2,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "631325",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2022-08-02",
+  "adversario": "Criciúma",
+  "golsSport": 1,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "631313",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2022-08-13",
+  "adversario": "CSA",
+  "golsSport": 4,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "631291",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2022-08-23",
+  "adversario": "Chapecoense",
+  "golsSport": 1,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "631272",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2022-08-30",
+  "adversario": "Novorizontino",
+  "golsSport": 1,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "631267",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2022-10-09",
+  "adversario": "Cruzeiro",
+  "golsSport": 3,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "631193",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2022-10-16",
+  "adversario": "Vasco",
+  "golsSport": 1,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "631190",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2023-01-21",
+  "adversario": "ABC",
+  "golsSport": 2,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "662219",
+  "liga": "bra.copa_do_nordeste",
+  "publico": 10253
+ },
+ {
+  "data": "2023-03-11",
+  "adversario": "Santa Cruz",
+  "golsSport": 2,
+  "golsAdversario": 0,
+  "fonte": "api-football",
+  "fonteId": "979101"
+ },
+ {
+  "data": "2023-03-18",
+  "adversario": "Santa Cruz",
+  "golsSport": 0,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "662613",
+  "liga": "bra.copa_do_nordeste"
+ },
+ {
+  "data": "2023-03-26",
+  "adversario": "CRB",
+  "golsSport": 4,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "667664",
+  "liga": "bra.copa_do_nordeste"
+ },
+ {
+  "data": "2023-03-29",
+  "adversario": "ABC",
+  "golsSport": 1,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "667767",
+  "liga": "bra.copa_do_nordeste",
+  "anotacao": "Jogo disputado em dois dias: começou em 29/03 e terminou em 30/03/2023."
+ },
+ {
+  "data": "2023-04-22",
+  "adversario": "Retrô",
+  "golsSport": 2,
+  "golsAdversario": 0,
+  "fonte": "api-football",
+  "fonteId": "1021242",
+  "tags": [
+   "Título"
+  ],
+  "anotacao": "Campeão pernambucano."
+ },
+ {
+  "data": "2023-04-26",
+  "adversario": "Coritiba",
+  "golsSport": 2,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "668016",
+  "liga": "bra.copa_do_brazil"
+ },
+ {
+  "data": "2023-05-03",
+  "adversario": "Ceará",
+  "golsSport": 1,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "668018",
+  "liga": "bra.copa_do_nordeste",
+  "tags": [
+   "Final"
+  ],
+  "anotacao": "Final da Copa do Nordeste."
+ },
+ {
+  "data": "2023-07-28",
+  "adversario": "CRB",
+  "golsSport": 2,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "666397",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2023-08-05",
+  "adversario": "Novorizontino",
+  "golsSport": 1,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "666417",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2023-08-26",
+  "adversario": "Ituano",
+  "golsSport": 1,
+  "golsAdversario": 2,
+  "fonte": "espn",
+  "fonteId": "666444",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2023-09-09",
+  "adversario": "Criciúma",
+  "golsSport": 3,
+  "golsAdversario": 3,
+  "fonte": "espn",
+  "fonteId": "666467",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2023-09-23",
+  "adversario": "Londrina",
+  "golsSport": 4,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "666490",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2023-11-10",
+  "adversario": "Atlético-GO",
+  "golsSport": 0,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "666557",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2023-11-25",
+  "adversario": "Sampaio Corrêa",
+  "golsSport": 4,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "666579",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2024-04-10",
+  "adversario": "Ceará",
+  "golsSport": 2,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "701539",
+  "liga": "bra.copa_do_nordeste"
+ },
+ {
+  "data": "2024-05-22",
+  "adversario": "Atlético-MG",
+  "golsSport": 1,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "702051",
+  "liga": "bra.copa_do_brazil"
+ },
+ {
+  "data": "2024-05-26",
+  "adversario": "Fortaleza",
+  "golsSport": 1,
+  "golsAdversario": 4,
+  "fonte": "espn",
+  "fonteId": "701759",
+  "liga": "bra.copa_do_nordeste"
+ },
+ {
+  "data": "2024-10-07",
+  "adversario": "Ceará",
+  "golsSport": 2,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "700196",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2024-11-24",
+  "adversario": "Santos",
+  "golsSport": 2,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "700280",
+  "liga": "bra.2",
+  "tags": [
+   "Acesso"
+  ],
+  "anotacao": "Jogo do acesso."
+ },
+ {
+  "data": "2025-02-05",
+  "adversario": "Fortaleza",
+  "golsSport": 0,
+  "golsAdversario": 2,
+  "fonte": "espn",
+  "fonteId": "730907",
+  "liga": "bra.copa_do_nordeste"
+ },
+ {
+  "data": "2025-03-09",
+  "adversario": "Santa Cruz",
+  "golsSport": 2,
+  "golsAdversario": 0,
+  "fonte": "manual",
+  "competicao": "Campeonato Pernambucano"
+ },
+ {
+  "data": "2025-04-02",
+  "adversario": "Retrô",
+  "golsSport": 1,
+  "golsAdversario": 2,
+  "fonte": "manual",
+  "competicao": "Campeonato Pernambucano",
+  "tags": [
+   "Título"
+  ],
+  "anotacao": "Tricampeão pernambucano."
+ },
+ {
+  "data": "2025-04-06",
+  "adversario": "Palmeiras",
+  "golsSport": 1,
+  "golsAdversario": 2,
+  "fonte": "espn",
+  "fonteId": "732603",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2025-04-16",
+  "adversario": "Bragantino",
+  "golsSport": 0,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "732626",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2025-05-11",
+  "adversario": "Cruzeiro",
+  "golsSport": 0,
+  "golsAdversario": 4,
+  "fonte": "espn",
+  "fonteId": "732661",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2025-05-25",
+  "adversario": "Internacional",
+  "golsSport": 1,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "732684",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2025-07-20",
+  "adversario": "Botafogo",
+  "golsSport": 0,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "732738",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2025-07-26",
+  "adversario": "Santos",
+  "golsSport": 2,
+  "golsAdversario": 2,
+  "fonte": "espn",
+  "fonteId": "732755",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2025-08-02",
+  "adversario": "Bahia",
+  "golsSport": 0,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "732768",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2025-08-16",
+  "adversario": "São Paulo",
+  "golsSport": 2,
+  "golsAdversario": 2,
+  "fonte": "espn",
+  "fonteId": "732788",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2025-09-21",
+  "adversario": "Corinthians",
+  "golsSport": 1,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "732826",
+  "liga": "bra.1"
+ },
+ {
+  "data": "2026-01-31",
+  "adversario": "Santa Cruz",
+  "golsSport": 2,
+  "golsAdversario": 1,
+  "fonte": "manual",
+  "competicao": "Campeonato Pernambucano"
+ },
+ {
+  "data": "2026-02-21",
+  "adversario": "Retrô",
+  "golsSport": 3,
+  "golsAdversario": 2,
+  "fonte": "manual",
+  "competicao": "Campeonato Pernambucano"
+ },
+ {
+  "data": "2026-03-01",
+  "adversario": "Náutico",
+  "golsSport": 3,
+  "golsAdversario": 3,
+  "fonte": "manual",
+  "competicao": "Campeonato Pernambucano"
+ },
+ {
+  "data": "2026-04-11",
+  "adversario": "Avaí",
+  "golsSport": 2,
+  "golsAdversario": 2,
+  "fonte": "espn",
+  "fonteId": "401860092",
+  "liga": "bra.2",
+  "aviso": "Data corrigida pela ESPN: na lista estava 13/04/2026."
+ },
+ {
+  "data": "2026-05-03",
+  "adversario": "Ceará",
+  "golsSport": 2,
+  "golsAdversario": 0,
+  "fonte": "espn",
+  "fonteId": "401860126",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2026-05-28",
+  "adversario": "Fortaleza",
+  "golsSport": 0,
+  "golsAdversario": 2,
+  "fonte": "espn",
+  "fonteId": "401871836",
+  "liga": "bra.copa_do_nordeste"
+ },
+ {
+  "data": "2026-07-27",
+  "adversario": "Cuiabá",
+  "golsSport": 1,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "401860257",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2026-08-14",
+  "adversario": "Londrina",
+  "golsSport": 2,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "401860274",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2026-10-06",
+  "adversario": "São Bernardo",
+  "golsSport": 2,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "401860380",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2026-10-16",
+  "adversario": "Fortaleza",
+  "golsSport": 0,
+  "golsAdversario": 2,
+  "fonte": "espn",
+  "fonteId": "401860399",
+  "liga": "bra.2"
+ },
+ {
+  "data": "2026-10-23",
+  "adversario": "Criciúma",
+  "golsSport": 2,
+  "golsAdversario": 1,
+  "fonte": "espn",
+  "fonteId": "401860408",
+  "liga": "bra.2"
+ }
+]

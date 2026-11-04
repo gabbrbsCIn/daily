@@ -1,8 +1,15 @@
-# Diário do Leão — requisitos (v0.2)
+# Diário do Leão — requisitos (v0.3)
 
 App para registrar os jogos que eu fui ver no estádio, guardar fotos e ver estatísticas de cada jogo e do conjunto. Os dados das partidas (estádio, público, árbitro, escalação, gols) vêm de uma API de futebol. Começa pessoal, para o Sport, mas o desenho já permite que qualquer torcedor monte o próprio diário. "Diário do Leão" é nome provisório.
 
-Protótipo navegável: `design/prototipo.html`. Ele já usa os dados reais da API para 84 dos 94 jogos.
+Protótipo navegável: `design/prototipo.html`. Ele já usa os dados reais das APIs para 86 dos 94 jogos (84 da ESPN e 2 da API-Football).
+
+O app começou (seção 12).
+
+## O que mudou desde a v0.2
+
+- Decisão de 04/11/2026: não assinar o plano pago da API-Football. Os 7 jogos do Pernambucano sem dados (2017, 2019, 2025 e 2026) e o sub-17 de 2016 são preenchidos à mão no app.
+- Primeira versão do app (seção 12).
 
 ## O que mudou desde a v0.1
 
@@ -256,9 +263,10 @@ O app vive em `gabbrbsCIn/daily`, separado de qualquer outro projeto. O código 
 
 ## 10. Perguntas em aberto
 
-1. Vale assinar um mês do plano Pro da API-Football (US$ 19) para trazer os 5 jogos do Pernambucano de 2025 e 2026, ou prefere preencher esses à mão?
-2. As 4 datas corrigidas pela ESPN (Palmeiras 2016, Vitória 2017, Avaí 2026 e São Paulo 2025) estão certas?
-3. Quais setores você costuma usar? Viram a lista inicial de sugestões.
+1. As 4 datas corrigidas pela ESPN (Palmeiras 2016, Vitória 2017, Avaí 2026 e São Paulo 2025) estão certas?
+2. Quais setores você costuma usar? Viram a lista inicial de sugestões.
+3. Onde publicar: Vercel com Postgres da Neon (grátis) é o caminho proposto. Precisa da sua conta para criar o projeto e o banco.
+4. Em 04/11/2026 a API-Football respondeu "Your account is suspended". A conta precisa ser conferida em dashboard.api-football.com; até lá o Pernambucano só entra à mão. Os 2 jogos de 2023 já estão no app, vindos dos arquivos em `dados/api-football/`.
 
 ## 11. Ideias para depois
 
@@ -267,3 +275,25 @@ O app vive em `gabbrbsCIn/daily`, separado de qualquer outro projeto. O código 
 - Card do jogo para compartilhar (placar, foto e "meu 95º jogo").
 - Comparar diários entre amigos: jogos em que estivemos juntos.
 - Notificação no dia do jogo: "você vai? marque presença".
+
+## 12. Situação do app
+
+Primeira versão em 04/11/2026: Next.js 16, Postgres com Drizzle (PGlite no desenvolvimento), login de senha única. Como rodar está no `README.md`.
+
+| Requisito | Situação |
+|---|---|
+| RF01–RF03 Lista, filtros e detalhe do jogo | Feito (filtros por texto, resultado, ano, competição e top 5) |
+| RF04 Registrar escolhendo na lista da fonte, ou à mão | Feito: ESPN por temporada, API-Football para o Pernambucano, formulário manual |
+| RF05 Editar e excluir; corrigir o público | Feito. Jogo manual aceita gols, escalação, técnico e árbitro digitados |
+| RF08 Jogo anterior e próximo | Feito |
+| RF09 Atualizar da fonte | Botão feito; a atualização automática nos dias seguintes falta |
+| RF14 Contexto do jogo | Feito, inclusive "primeira vez que você viu" |
+| RF15–RF17 Resumo, recordes, adversários | Feito |
+| RF18 Por temporada | Tabela feita; faltam gráfico, dia da semana, setor e acompanhante |
+| RF19 Momentos | Feito |
+| RF20 Estatísticas da API (7.3) | Artilheiros, mais vistos, gols por faixa, maior público, árbitros, Ilha × Arena. Falta o pé-quente |
+| RF06, RF07 Montar diário por período, importar lista | Falta (o diário inicial veio por script) |
+| RF10 Top 5 ordenável | Só a marcação de candidato |
+| RF11–RF13 Fotos | Falta: depende do armazenamento (Vercel Blob) |
+| RF21 Exportar | Falta |
+| Rascunho offline e PWA | Falta |
