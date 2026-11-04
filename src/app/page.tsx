@@ -3,6 +3,8 @@ import { getDb } from '@/lib/db'
 import { resumo, type JogoVisto } from '@/lib/estatisticas'
 import { dataCurta, num, pct, plural } from '@/lib/formato'
 import { listarJogos } from '@/lib/partidas'
+import { importarDiarioInicial } from './acoes'
+import { BotaoEnviar } from './botao'
 import { placar } from './componentes'
 
 const rotulo = (j: JogoVisto) => `${dataCurta(j.data)} · Sport ${placar(j)} ${j.adversario.nome}`
@@ -42,13 +44,21 @@ function Sequencia({ titulo, js }: { titulo: string; js: JogoVisto[] }) {
   )
 }
 
+// Carregar o diário inicial busca 84 partidas na ESPN.
+export const maxDuration = 300
+
 export default async function Resumo() {
   const js = await listarJogos(await getDb())
   if (!js.length) {
     return (
       <section className="view">
         <div className="empty">
-          Nenhum jogo ainda. <Link href="/registrar">Registre o primeiro</Link> ou rode <code>npm run importar</code>.
+          <p>
+            Nenhum jogo ainda. <Link href="/registrar">Registre o primeiro</Link> ou carregue os 94 jogos da sua lista.
+          </p>
+          <form action={importarDiarioInicial}>
+            <BotaoEnviar rotulo="Carregar meu diário" enviando="Buscando as partidas na ESPN, leva cerca de 1 minuto…" />
+          </form>
         </div>
       </section>
     )

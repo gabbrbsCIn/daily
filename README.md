@@ -42,11 +42,7 @@ Outros comandos:
 
 ## Publicar
 
-O caminho proposto é a Vercel com um Postgres da Neon. No projeto da Vercel, defina `APP_SENHA`, `SESSAO_SEGREDO`, `DATABASE_URL` e, se for usar, `API_FOOTBALL_KEY`. Depois carregue o diário no banco de produção:
-
-```bash
-DATABASE_URL="postgres://..." npm run importar
-```
+O app fica na Vercel, com um Postgres da Neon. O projeto da Vercel precisa de `APP_SENHA`, `SESSAO_SEGREDO` e `DATABASE_URL` (a integração da Neon cria esta sozinha); `API_FOOTBALL_KEY` é opcional. Com o banco vazio, o Resumo mostra o botão **Carregar meu diário**, que importa os 94 jogos (cerca de 1 minuto).
 
 ## Fontes de dados
 
